@@ -1,0 +1,388 @@
+/* reset css */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.btn,
+button,
+button:focus,
+input:focus,
+textarea:focus,
+select,
+select:focus,
+a:focus {
+  outline: 0px !important;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+button[disabled] {
+  pointer-events: none;
+}
+
+input {
+  padding: 0;
+}
+
+input:required {
+  box-shadow: none;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+::-webkit-scrollbar {
+  /* make scrollbar transparent */
+  width: 0px;
+  background: transparent;
+}
+
+/* basic setting */
+$body-bg: #fff;
+$body-color: #2a2a2a;
+$main-blue: #001935;
+$secondary-blue: #3c88fd;
+$freedom-blue: #02b8ff;
+$dark-gray: #4a4a4a;
+$light-gray: #a7aaaf;
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+);
+
+/* 使用@each 產出css size設定 */
+@each $prop, $abbrev in (width: w, height: h) {
+  @each $num, $val in $sizes {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: #{$val};
+    }
+  }
+}
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25,
+  ),
+  2: (
+    $spacer * 0.5,
+  ),
+  3: (
+    $spacer * 0.75,
+  ),
+  4: $spacer,
+  5: (
+    $spacer * 1.25,
+  ),
+  6: (
+    $spacer * 1.5,
+  ),
+  7: (
+    $spacer * 1.75,
+  ),
+  8: (
+    $spacer * 2,
+  ),
+);
+
+/* 使用@each 產出css spacer設定 */
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $num, $val in $spacers {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: #{$val};
+    }
+    .#{$abbrev}t-#{$num} {
+      #{$prop}-top: #{$val};
+    }
+    .#{$abbrev}r-#{$num} {
+      #{$prop}-right: #{$val};
+    }
+    .#{$abbrev}l-#{$num} {
+      #{$prop}-left: #{$val};
+    }
+    .#{$abbrev}b-#{$num} {
+      #{$prop}-bottom: #{$val};
+    }
+    .#{$abbrev}x-#{$num} {
+      #{$prop}-right: #{$val};
+      #{$prop}-left: #{$val};
+    }
+    .#{$abbrev}y-#{$num} {
+      #{$prop}-top: #{$val};
+      #{$prop}-bottom: #{$val};
+    }
+  }
+}
+
+@mixin getStepNums($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .circle-container::after {
+      content: "#{$i}";
+    }
+  }
+}
+
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+}
+
+%input-style {
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 0.5rem;
+  &:hover,
+  &:focus {
+    border-color: $dark-gray;
+  }
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: $body-bg;
+  color: $body-color;
+  font-family: "PingFang TC";
+}
+
+.d-none {
+  display: none;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-blockt;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-content-start {
+  align-content: flex-start;
+}
+
+.align-content-end {
+  align-content: flex-end;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.scrollbar {
+  padding-left: 6px;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* style start */
+/* nav */
+header {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  background: $body-bg;
+  position: fixed;
+  z-index: 999;
+  a {
+    color: $body-color;
+    img {
+      width: 170px;
+      height: 30px;
+      display: inline-block;
+    }
+  }
+  nav {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: 0 16px;
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      transform: scale(1, 0);
+      width: 100%;
+      height: 60px;
+      padding: 8px;
+      padding-top: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    .nav-item {
+      width: 100%;
+      padding: 8px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      opacity: 0;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    // ~ 符號為此element後方的某個元素
+    #navbar-toggle:checked ~ .nav-list {
+      transform: scale(1, 1);
+      transform-origin: top;
+      transition: transform 0.2s ease-out;
+    }
+
+    #navbar-toggle:checked ~ * .nav-item {
+      transition: opacity 0.2s ease-out 0.15s;
+      opacity: 0.7;
+    }
+    .navbar-toggle-label {
+      grid-column: 1/2;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    #navbar-toggle {
+      position: absolute;
+      top: 0;
+      display: none;
+    }
+    .hamburger {
+      position: relative;
+    }
+    .hamburger,
+    .hamburger::after,
+    .hamburger::before {
+      width: 30px;
+      height: 2px;
+      background: #000;
+    }
+    .hamburger::after,
+    .hamburger::before {
+      position: absolute;
+      left: 0;
+      content: "";
+    }
+    .hamburger::before {
+      top: 8px;
+    }
+    .hamburger::after {
+      bottom: 8px;
+    }
+  }
+}
